@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestEndPoints {
@@ -18,7 +19,7 @@ public class TestEndPoints {
     private final String baseURI = RestAssured.baseURI = "http://dummy.restapiexample.com/api/v1/";
 
     private final String employeesEndpoint = "employees";
-    private final String employeeEndpoint = "employee/4";
+    private final String employeeEndpoint = "employee/1";
     private final String createEmployee = "create";
     private final String updateEmployee = "update/7";
     private final String deleteEmployee = "delete/6";
@@ -44,9 +45,9 @@ public class TestEndPoints {
     @Test
     public void createAnEmployee() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", "B Hossain ");
-        jsonObject.put("salary", "100000");
-        jsonObject.put("age", "57");
+        jsonObject.put("employee_name", "B Hossain ");
+        jsonObject.put("employee_salary", "550000");
+        jsonObject.put("employee_age", "57");
 
         System.out.println(jsonObject);
         Response response = RestAssured.given().contentType(ContentType.JSON).body(jsonObject)
@@ -79,6 +80,7 @@ public class TestEndPoints {
 
         System.out.println(response.asString());
         System.out.println(response.getStatusCode());
+        Assert.assertEquals();
     }
 
 }
